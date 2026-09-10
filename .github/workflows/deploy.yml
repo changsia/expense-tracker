@@ -21,6 +21,9 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm build
+        env:
+            PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
+            PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.PUBLIC_SUPABASE_ANON_KEY }}
       - run: cp static/404.html build/404.html
       - uses: peaceiris/actions-gh-pages@v4
         with:
